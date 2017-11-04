@@ -8,6 +8,11 @@ class calico::params {
     $bin_dir = $::tarmak::bin_dir
     $systemd_dir = $::tarmak::systemd_dir
     $cloud_provider = $::tarmak::cloud_provider
+    if $cloud_provider == 'aws' {
+      $aws_region = $::ec2_metadata['placement']['availability-zone'][0,-2]
+    } else {
+      $aws_region = undef
+    }
   } else {
     $etcd_cluster = []
     $etcd_overlay_port = 2359
