@@ -70,6 +70,7 @@ spec:
       hostNetwork: true
       tolerations:
       - key: node-role.kubernetes.io/master
+        value: "true"
         effect: NoSchedule
       - key: CriticalAddonsOnly
         operator: Exists
