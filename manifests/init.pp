@@ -32,10 +32,6 @@ class calico(
     fail('Backend storage kubernetes is not yet supported')
   }
 
-  if $cloud_provider == 'aws' {
-    include ::calico::disable_source_destination_check
-  }
-
   # make sure old stuff is disabled
   $node_service_name = 'calico-node.service'
   exec {"systemctl stop ${node_service_name}":
