@@ -87,12 +87,18 @@ spec:
               value: "<%= @aws_region %>"
           volumeMounts:
             - name: ssl-certs
-              mountPath: "/etc/ssl/certs/ca-certificates.crt"
+              mountPath: "/etc/ssl/certs"
+              readOnly: true
+            - name: ssl-pki
+              mountPath: "/etc/pki"
               readOnly: true
           imagePullPolicy: "Always"
       volumes:
         - name: ssl-certs
           hostPath:
-            path: "/etc/ssl/certs/ca-certificates.crt"
+            path: "/etc/ssl/certs"
+        - name: ssl-pki
+          hostPath:
+            path: "/etc/pki"
       nodeSelector:
         role: "master"
