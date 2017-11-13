@@ -19,10 +19,6 @@ describe 'calico' do
     it do
       should contain_class('calico')
       should contain_class('calico::disable_source_destination_check')
-      should contain_file('/opt/bin/disable-source-destination-check.sh').with({
-        'ensure' => 'file',
-        'mode'   => '0755',
-      })
     end
   end
 end

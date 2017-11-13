@@ -31,9 +31,10 @@ spec:
       tolerations:
       - key: "CriticalAddonsOnly"
         operator: "Exists"
-      - key: "dedicated"
-        value: "master"
-        effect: "NoSchedule"
+      - effect: "NoSchedule"
+        operator: "Exists"
+      - effect: "NoExecute"
+        operator: "Exists"
 <%- end -%>
       hostNetwork: true
       containers:
